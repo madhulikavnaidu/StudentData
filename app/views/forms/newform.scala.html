@@ -1,0 +1,22 @@
+@(studentForm : Form[Students])
+@import helper._
+@import helper.twitterBootstrap._
+
+@main("NEW FORM"){
+<h2>Student Information</h2>
+@helper.form(action = routes.StudentData.save()){
+<fieldset>
+
+<legend>Entries (@studentForm("name").valueOr("New"))</legend>
+@helper.inputText(studentForm("rollno"), '_label -> "rollno")
+@helper.inputText(studentForm("name"), '_label -> "Name")
+@helper.inputText(studentForm("age"), '_label -> "age")
+@helper.inputText(studentForm("major_id"), '_label -> "Math -1/Computers - 3/Physics - 2")
+
+</fieldset>
+<input type = "submit" class="btn btn-primary" value = "save">
+
+
+}
+
+}

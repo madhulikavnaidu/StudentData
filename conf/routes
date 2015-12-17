@@ -1,0 +1,34 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+#GET     /                           controllers.Application.index()
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+#GET     /                           controllers.StudentData.index()
+
+#GET     /                           controllers.MajorData.index()
+
+GET		/students/				controllers.StudentData.list()
+
+GET		/students/new				controllers.StudentData.newform()
+
+GET		/students/				controllers.StudentData.save()
+
+GET		/students/:ean				controllers.StudentData.edit(ean: Long)
+
+DELETE	/students/:ean		controllers.StudentData.removestudent(ean: Long)
+
+GET		/majors/				controllers.MajorData.listmajor()
+
+GET		/majors/new				controllers.MajorData.newmajorform()
+
+GET		/majors/				controllers.MajorData.save()
+
+GET		/majors/:ean				controllers.MajorData.edit(ean: Long)
+
+DELETE	/majors/:ean		controllers.MajorData.removemajor(ean: Long)
+

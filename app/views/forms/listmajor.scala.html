@@ -1,0 +1,52 @@
+@(forms: List[Majors])
+
+
+
+@main("Major Information"){
+
+
+	<h4><a href = "@routes.MajorData.newmajorform()">
+	<i class="icon-plus"></i> Add Major</a></h4>
+	<h3>Major Details</h3>
+	
+	<script>
+	function del(urlToDelete){
+	$.ajax({
+	url: urlToDelete,
+	type: 'DELETE',
+	success: function(results){
+	location.reload();
+	}
+	});
+	}
+	</script>
+	
+	<table class="table table-striped">
+	<thead>
+	<tr>
+	<th>Major_Id</th>
+	<th>Major Name</th>
+	</tr>
+	</thead>
+	<tbody>
+	
+	@for(Majors  <- forms ){
+	<tr>
+	
+	<td>@Majors.major_id</td>
+	<td>@Majors.major_name</td>
+	<td>
+		<a  href ="@routes.MajorData.edit(Majors.major_id)"class = "btn" >edit</a>
+
+	
+	<a onclick = "del('@routes.MajorData.removemajor(Majors.major_id)')" 
+	class = "btn">delete</a>
+	
+	</td>
+	</tr>
+	
+	}
+	</tbody>
+	</table>
+	
+}

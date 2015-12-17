@@ -1,0 +1,56 @@
+@(forms: List[Students])
+
+
+
+@main("Student Information"){
+
+
+	<h4><a href = "@routes.StudentData.newform()">
+	<i class="icon-plus"></i> Add Student</a></h4>
+	<h3>Students Details</h3>
+	
+	<script>
+	function del(urlToDelete){
+	$.ajax({
+	url: urlToDelete,
+	type: 'DELETE',
+	success: function(results){
+	location.reload();
+	}
+	});
+	}
+	</script>
+	
+	<table class="table table-striped">
+	<thead>
+	<tr>
+	<th>Rollno</th>
+	<th>Name</th>
+	<th>Age</th>
+	<th>Major</th>
+	</tr>
+	</thead>
+	<tbody>
+	
+	@for(Students  <- forms ){
+	<tr>
+	
+	<td>@Students.rollno</td>
+	<td>@Students.name</td>
+	<td>@Students.age</td>
+	<td>@Students.major_id</td>
+	<td>
+		<a  href ="@routes.StudentData.edit(Students.id)"class = "btn" >edit</a>
+
+	
+	<a onclick = "del('@routes.StudentData.removestudent(Students.id)')" 
+	class = "btn">delete</a>
+	
+	</td>
+	</tr>
+	
+	}
+	</tbody>
+	</table>
+	
+}
