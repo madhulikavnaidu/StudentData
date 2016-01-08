@@ -35,12 +35,12 @@
 	@for(Students  <- forms ){
 	<tr>
 	
-	<td><a href = "@routes.StudentData.details">@Students.rollno</a></td>
-	<td><a href = "@routes.StudentData.details">@Students.name></a></td>
-	<td><a href = "@routes.StudentData.details">@Students.age></a></td>
-	<td><a href = "@routes.StudentData.details">@Students.major_id></a></td>
+	<td><a href = "@routes.StudentData.details(Students.id)">@Students.rollno</a></td>
+	<td><a href = "@routes.StudentData.details(Students.id)">@Students.name</a></td>
+	<td><a href = "@routes.StudentData.details(Students.id)">@Students.age</a></td>
+	<td><a href = "@routes.StudentData.details(Students.id)">@Students.major_id</a></td>
 	<td>
-		<a  href ="@routes.StudentData.edit(Students.id)"class = "btn" >edit</a>
+		<a  href ="@routes.StudentData.details(Students.id)"class = "btn" >edit</a>
 
 	
 	<a onclick = "del('@routes.StudentData.removestudent(Students.id)')" 

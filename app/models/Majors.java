@@ -28,4 +28,8 @@ public class Majors extends Model {
 	public String toString() {
 		return String.format("%s-%s", major_id, major_name);
 	}
+	
+	public String major_name(String major_name){
+			return null;
+	}
 }

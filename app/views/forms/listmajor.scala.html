@@ -32,10 +32,10 @@
 	
 	@for(Majors  <- forms ){
 	<tr>
-	<td><a href = "@routes.MajorData.details">@Majors.major_id</a></td>
-	<td><a href = "@routes.MajorData.details">@Majors.major_name</a></td>
+	<td><a href = "@routes.MajorData.details(Majors.major_id)">@Majors.major_id</a></td>
+	<td><a href = "@routes.MajorData.details(Majors.major_id)">@Majors.major_name</a></td>
 	<td>
-		<a  href ="@routes.MajorData.edit(Majors.major_id)"class = "btn" >edit</a>
+		<a  href ="@routes.MajorData.details(Majors.major_id)"class = "btn" >edit</a>
 
 	
 	<a onclick = "del('@routes.MajorData.removemajor(Majors.major_id)')" 

@@ -16,9 +16,9 @@ GET		/students/				controllers.StudentData.list()
 
 GET		/students/new				controllers.StudentData.newform()
 
-GET		/students/				controllers.StudentData.details()
+GET		/students/:ean				controllers.StudentData.details(ean: Long)
 
-GET		/students/				controllers.StudentData.save()
+POST		/students/				controllers.StudentData.save()
 
 GET		/students/:ean				controllers.StudentData.edit(ean: Long)
 
@@ -28,9 +28,9 @@ GET		/majors/				controllers.MajorData.listmajor()
 
 GET		/majors/new				controllers.MajorData.newmajorform()
 
-GET		/majors/				controllers.MajorData.details()
+GET		/majors/:ean				controllers.MajorData.details(ean: Long)
 
-GET		/majors/				controllers.MajorData.save()
+POST		/majors/				controllers.MajorData.save()
 
 GET		/majors/:ean				controllers.MajorData.edit(ean: Long)
 

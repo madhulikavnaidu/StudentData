@@ -19,32 +19,36 @@ public class StudentData extends Controller{
 	}
 	
 	public static Result list(){
-		List<Students> students = Students.find.all();
-		return ok(list.render(students));
+		List<Students> forms = Students.find.all();
+		return ok(list.render(forms));
 	}
 	
 	public static Result newform(){
 		return ok(newform.render(studentForm));
 	}
 	
-	public static Result details(){
-		
-		Form<Students>filledForm = studentForm.bindFromRequest();
-		Students students =  filledForm.get();
+	public static Result details(Long id){
+		final Students students  = Students.find.byId(id);
+		//students.delete();
+		Form<Students>filledForm = studentForm.fill(students);
+//		Students students =  filledForm.get();
 		return ok(newform.render(filledForm));
 	}
 	
 	public static Result save(){
 		Form<Students> boundForm = studentForm.bindFromRequest();
 		Students students =  boundForm.get();
-		students.save();
-		
+		if(students.id == null){
+			students.save();
+		}else{
+			students.update();
+		}
 		return redirect(routes.StudentData.list());
 	}
 	
-	public static Result removestudent(Long eid)
+	public static Result removestudent(Long id)
 	{
-		Students students =  Students.find.byId(eid);
+		Students students =  Students.find.byId(id);
 		students.delete();
 		return redirect(routes.StudentData.list());
 	}

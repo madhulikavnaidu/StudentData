@@ -1,4 +1,4 @@
-name := "StudentDetails"
+name := "StudentData"
 
 version := "1.0-SNAPSHOT"
 

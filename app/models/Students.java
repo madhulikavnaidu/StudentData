@@ -18,20 +18,22 @@ public class Students extends Model{
 	public Long rollno;
 	public Long age;
 	public Long major_id;
+	public Majors major_name;
 	
 	public static Model.Finder<Long, Students> find = 
 		new Finder<Long, Students>(Long.class, Students.class);
 	
 	public static List<Students> students = new ArrayList<Students>();
 	
-	public Students(String name, Long rollno, Long age, Long major_id){
+	public Students(String name, Long rollno, Long age, Long major_id, Majors major_name){
 		this.name = name;
 		this.rollno = rollno;
 		this.age = age;
 		this.major_id = major_id;
+		this.major_name =  Majors.find.byId(major_id);
 	}
 	
 	public String toString() {
-		return String.format("%s-%s", rollno, name, age, major_id);
+		return String.format("%s-%s", rollno, name, age, major_id, major_name);
 	}
 }
