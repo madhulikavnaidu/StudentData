@@ -2,7 +2,7 @@
 
 
 
-@main("Student Information"){
+@main("StudentData Catalouge"){
 
 
 	<h4><a href = "@routes.StudentData.newform()">
@@ -35,10 +35,10 @@
 	@for(Students  <- forms ){
 	<tr>
 	
-	<td>@Students.rollno</td>
-	<td>@Students.name</td>
-	<td>@Students.age</td>
-	<td>@Students.major_id</td>
+	<td><a href = "@routes.StudentData.details">@Students.rollno</a></td>
+	<td><a href = "@routes.StudentData.details">@Students.name></a></td>
+	<td><a href = "@routes.StudentData.details">@Students.age></a></td>
+	<td><a href = "@routes.StudentData.details">@Students.major_id></a></td>
 	<td>
 		<a  href ="@routes.StudentData.edit(Students.id)"class = "btn" >edit</a>
 

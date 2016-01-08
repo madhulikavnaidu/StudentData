@@ -14,12 +14,12 @@ public class StudentData extends Controller{
 	
 	public final static Form<Students> studentForm = Form.form(Students.class);
 	
-//	public static Result index(){
-//		return redirect(routes.StudentData.list());
-//	}
+	public static Result index(){
+		return redirect(routes.StudentData.list());
+	}
 	
 	public static Result list(){
-		List<Students> students = studentForm.find.all();
+		List<Students> students = Students.find.all();
 		return ok(list.render(students));
 	}
 	
@@ -27,10 +27,18 @@ public class StudentData extends Controller{
 		return ok(newform.render(studentForm));
 	}
 	
+	public static Result details(){
+		
+		Form<Students>filledForm = studentForm.bindFromRequest();
+		Students students =  filledForm.get();
+		return ok(newform.render(filledForm));
+	}
+	
 	public static Result save(){
 		Form<Students> boundForm = studentForm.bindFromRequest();
 		Students students =  boundForm.get();
 		students.save();
+		
 		return redirect(routes.StudentData.list());
 	}
 	

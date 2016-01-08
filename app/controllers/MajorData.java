@@ -14,12 +14,12 @@ public class MajorData extends Controller{
 	
 	public final static Form<Majors> majorForm = Form.form(Majors.class);
 	
-//	public static Result index(){
-//		return redirect(routes.MajorData.list());
-//	}
+	public static Result index(){
+		return redirect(routes.MajorData.listmajor());
+	}
 	
 	public static Result listmajor(){
-		List<Majors> majors = majorForm.find.all();
+		List<Majors> majors = Majors.find.all();
 		return ok(listmajor.render(majors));
 	}
 	
@@ -27,18 +27,25 @@ public class MajorData extends Controller{
 		return ok(newmajorform.render(majorForm));
 	}
 	
+	public static Result details(){
+		
+		Form<Majors>filledForm = majorForm.bindFromRequest();
+		Majors majors =  filledForm.get();
+		return ok(newmajorform.render(filledForm));
+	}
+	
 	public static Result save(){
 		Form<Majors> boundForm = majorForm.bindFromRequest();
 		Majors majors =  boundForm.get();
 		majors.save();
-		return redirect(routes.MajorData.list());
+		return redirect(routes.MajorData.listmajor());
 	}
 	
 	public static Result removemajor(Long eid)
 	{
 		Majors majors=  Majors.find.byId(eid);
 		majors.delete();
-		return redirect(routes.MajorData.list());
+		return redirect(routes.MajorData.listmajor());
 	}
 	
 	public static Result edit(Long eid){

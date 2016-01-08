@@ -3,11 +3,13 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 
+@Entity
 public class Majors extends Model {
 	@Id
 	public Long major_id;

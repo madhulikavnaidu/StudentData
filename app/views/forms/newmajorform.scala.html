@@ -7,13 +7,13 @@
 @helper.form(action = routes.MajorData.save()){
 <fieldset>
 
-<legend>Entries (@majorForm("name").valueOr("New"))</legend>
+<legend>Majors (@majorForm("name").valueOr("New"))</legend>
 @helper.inputText(majorForm("major_id"), '_label -> "major_id")
 @helper.inputText(majorForm("major_name"), '_label -> "Major Name")
 
 </fieldset>
 <input type = "submit" class="btn btn-primary" value = "save">
-
+<a class = "btn" href = "@routes.MajorData.index()>Cancel</a>
 
 
 }
